@@ -20,7 +20,7 @@ import com.zombie.deliziusz.appnotas.Datos.Alerta;
 import com.zombie.deliziusz.appnotas.Datos.Nota_Serial;
 
 /**
- * Created by jlmgm on 02/12/2017.
+ * Created by Deliziusz on 13/Nov/2019.
  */
 
 public class Servicio extends Service {

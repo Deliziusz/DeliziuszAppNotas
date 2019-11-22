@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jorgemedina.guardanotas_v5.Datos.ActivityNotifica">
+    tools:context="com.zombie.deliziusz.appnotas.ActivityNotifica">
 
     <ListView
         android:id="@+id/listaAlertas"

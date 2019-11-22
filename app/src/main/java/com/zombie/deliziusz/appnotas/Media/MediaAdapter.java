@@ -15,9 +15,8 @@ import java.util.List;
 
 import com.zombie.deliziusz.appnotas.Datos.Media;
 import com.zombie.deliziusz.appnotas.R;
-
 /**
- * Created by jlmgm on 05/12/2017.
+ * Created by Deliziusz on 13/Nov/2019.
  */
 
 public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.MediaViewHolder>{

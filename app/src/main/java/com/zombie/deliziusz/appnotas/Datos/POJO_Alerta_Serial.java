@@ -1,6 +1,9 @@
 package com.zombie.deliziusz.appnotas.Datos;
 
 import java.io.Serializable;
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 
 public class POJO_Alerta_Serial implements Serializable{
 

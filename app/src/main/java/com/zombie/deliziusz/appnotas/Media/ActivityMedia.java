@@ -3,6 +3,7 @@ package com.zombie.deliziusz.appnotas.Media;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Environment;
@@ -37,14 +39,16 @@ import com.zombie.deliziusz.appnotas.Datos.ActivityDatos;
 import com.zombie.deliziusz.appnotas.Datos.DaoMedia;
 import com.zombie.deliziusz.appnotas.Datos.Media;
 import com.zombie.deliziusz.appnotas.R;
+import com.zombie.deliziusz.appnotas.grabadora;
 
 import static android.support.v4.content.FileProvider.getUriForFile;
-
 /**
- * Created by jlmgm on 05/12/2017.
+ * Created by Deliziusz on 13/Nov/2019.
  */
 
 public class ActivityMedia extends AppCompatActivity {
+
+
 
     int tomaID = 0;
 

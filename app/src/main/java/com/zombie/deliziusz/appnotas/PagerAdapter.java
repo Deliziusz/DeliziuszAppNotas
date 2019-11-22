@@ -5,7 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.zombie.deliziusz.appnotas.Datos.Nota;
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private int numTabs;

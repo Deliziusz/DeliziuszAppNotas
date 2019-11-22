@@ -1,7 +1,9 @@
 package com.zombie.deliziusz.appnotas.Datos;
 
 import java.io.Serializable;
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class POJO_Media_Serial implements Serializable {
 
     private int id_media;

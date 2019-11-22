@@ -8,7 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zombie.deliziusz.appnotas.Datos.Nota;
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
 
     private final Nota[] dummyModels;

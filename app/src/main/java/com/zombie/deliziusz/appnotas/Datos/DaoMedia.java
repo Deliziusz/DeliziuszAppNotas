@@ -9,7 +9,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 
 public class DaoMedia {
 

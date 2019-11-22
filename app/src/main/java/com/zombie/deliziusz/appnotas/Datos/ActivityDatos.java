@@ -18,7 +18,9 @@ import java.util.Calendar;
 
 
 import com.zombie.deliziusz.appnotas.R;
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class ActivityDatos extends AppCompatActivity implements View.OnClickListener {
 
     int type_flag = 0;

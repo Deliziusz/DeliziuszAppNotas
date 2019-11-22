@@ -12,10 +12,7 @@ import android.view.ViewGroup;
 import com.zombie.deliziusz.appnotas.Datos.Nota;
 
 /**
- * A fragment representing a dummyModels of POJO_Nota
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * Created by Deliziusz on 13/Nov/2019.
  */
 public class ItemFragment extends Fragment {
 

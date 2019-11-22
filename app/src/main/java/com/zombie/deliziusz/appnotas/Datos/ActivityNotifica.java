@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.zombie.deliziusz.appnotas.R;
 
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class ActivityNotifica extends AppCompatActivity {
 
     ListView lista;

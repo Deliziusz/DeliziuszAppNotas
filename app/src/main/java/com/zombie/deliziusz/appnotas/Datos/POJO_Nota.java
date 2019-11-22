@@ -2,7 +2,9 @@ package com.zombie.deliziusz.appnotas.Datos;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+/**
+ * Created by Deliziusz on 13/Nov/2019.
+ */
 public class POJO_Nota implements Parcelable{
 
     private int id_nota;
