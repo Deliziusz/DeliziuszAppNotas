@@ -3,6 +3,7 @@ package com.zombie.deliziusz.appnotas.Media;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,17 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 
 
@@ -35,13 +30,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.zombie.deliziusz.appnotas.Datos.ActivityDatos;
 import com.zombie.deliziusz.appnotas.Datos.DaoMedia;
 import com.zombie.deliziusz.appnotas.Datos.Media;
 import com.zombie.deliziusz.appnotas.R;
-import com.zombie.deliziusz.appnotas.grabadora;
 
-import static android.support.v4.content.FileProvider.getUriForFile;
 /**
  * Created by Deliziusz on 13/Nov/2019.
  */
@@ -49,18 +41,38 @@ import static android.support.v4.content.FileProvider.getUriForFile;
 public class ActivityMedia extends AppCompatActivity {
 
 
-
+    Button btn_aud;
     int tomaID = 0;
 
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
-
+    private MediaRecorder grabacion;
+    private String archivoSalida = null;
+    private Button btn_recorder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media);
 
+        btn_aud = (Button)findViewById(R.id.btn_audio);
+
+        btn_aud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        btn_recorder = (Button)findViewById(R.id.btn_rec);
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ActivityMedia.this, new String[]
+                    {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1000);
+        }
         Bundle datos = this.getIntent().getExtras();
         int recupera_idRegistro = datos.getInt("idregistro_integer");
         tomaID = recupera_idRegistro;
@@ -72,6 +84,35 @@ public class ActivityMedia extends AppCompatActivity {
         cargar();
 
     }
+
+    public void Recorder(View view){
+
+        if(grabacion == null){
+            archivoSalida = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Grabacion.mp3";
+            grabacion = new MediaRecorder();
+            grabacion.setAudioSource(MediaRecorder.AudioSource.MIC);
+            grabacion.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            grabacion.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+            grabacion.setOutputFile(archivoSalida);
+
+            try{
+                grabacion.prepare();
+                grabacion.start();
+            }catch (IOException e){
+            }
+
+            btn_recorder.setBackgroundResource(R.drawable.rec);
+            Toast.makeText(getApplicationContext(), "Grabando...", Toast.LENGTH_SHORT).show();
+        }else if(grabacion!= null) {
+            grabacion.stop();
+            grabacion.release();
+            grabacion = null;
+            btn_recorder.setBackgroundResource(R.drawable.stop_rec);
+            Toast.makeText(getApplicationContext(), "Grabación finalizada...", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     public void cargar(){
 
@@ -107,6 +148,8 @@ public class ActivityMedia extends AppCompatActivity {
     private static final String ALBUM = "GuardaNotas";
     private static final String EXTENSION_JPEG = ".jpg";
     final int MY_PERMISSIONS_REQUEST_READ_ESTORAGE=124;
+
+
 
     public void btnMedia_click(View v){
         Toast.makeText(ActivityMedia.this,"Tomar foto",Toast.LENGTH_SHORT).show();
@@ -236,33 +279,16 @@ public class ActivityMedia extends AppCompatActivity {
         }
 
     }
+    public void reproducir(View view) {
 
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(archivoSalida);
+            mediaPlayer.prepare();
+        } catch (IOException e){
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        mediaPlayer.start();
+        Toast.makeText(getApplicationContext(), "Reproduciendo audio", Toast.LENGTH_SHORT).show();
+    }
     }
